@@ -25,14 +25,14 @@ Or install it yourself as:
 First, make sure you have an API_KEY in the .env file then call!
 To fetch currant conditions:
 ```ruby
-object_name = DarkSkyWeather::CurrentWeather.currently('#{ENV['WEATHER_API_URL']}', LATITUDE, LONGITUDE)
+object_name = DarkSkyWeather::CurrentWeather.currently(ENV['WEATHER_API_KEY'], LATITUDE, LONGITUDE)
 
 Cool methods to call on you new object:
 
 object_name.to_date => "Thursday, 09 Apr 2015  7:25 PM"
 .summary
 .icon
-.precipProbability
+.precip
 .temperature (rounded down)
 .apparentTemperature
 .humidity
@@ -40,7 +40,7 @@ object_name.to_date => "Thursday, 09 Apr 2015  7:25 PM"
 
 To get an entire weeks worth of weather
 ```ruby
-object_name = DarkSkyWeather::CurrentWeather.daily('#{ENV['WEATHER_API_URL']}', LATITUDE, LONGITUDE)
+object_name = DarkSkyWeather::CurrentWeather.daily(ENV['WEATHER_API_KEY'], LATITUDE, LONGITUDE)
 
 All the above methods will work here plus:
 .precip => 50%

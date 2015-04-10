@@ -44,7 +44,7 @@ module DarkSkyWeather
     end
 
     def abbreviated_week_day
-      if format_seconds.strftime("%A").downcase == "thursday" || "tuesday"
+      if format_seconds.strftime("%A").downcase == "thursday" && format_seconds.strftime("%A").downcase == "tuesday"
         format_seconds.strftime("%A").slice(0, 4)
       else
         format_seconds.strftime("%A").slice(0, 3)
@@ -52,7 +52,13 @@ module DarkSkyWeather
     end
 
     def temp
-      @temperature.round || @temperatureMin.round || @temperatureMax.round
+      if @temperature
+        @temperature.round
+      elsif @temperatureMax
+        @temperatureMax.round
+      else
+        @temperatureMin.round
+      end
     end
 
     def humidity
